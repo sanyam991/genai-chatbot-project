@@ -1,76 +1,93 @@
-GenAI Chatbot with RAG
-This is a full-stack, AI-powered chatbot designed to provide contextual answers based on a private document. The application demonstrates a comprehensive understanding of modern web development and Generative AI principles.
+GenAI Chatbot with Retrieval-Augmented Generation (RAG)
 
-The chatbot is built on a modular architecture, with a React frontend for the user interface and a Python/Flask backend for handling API logic and AI processing.
+Overview:
+This project is a full-stack, AI-powered chatbot that delivers contextual responses based on a private document using Retrieval-Augmented Generation (RAG).
+It demonstrates proficiency in modern web development, Generative AI, and end-to-end application design.
+
+The system follows a modular architecture:
+Frontend: Built with React for an intuitive and responsive chat interface.
+Backend: Implemented in Python (Flask) to handle API requests, AI processing, and secure integration with the Gemini API.
 
 Key Features
-Conversational Chatbot: An interactive chat interface that supports multi-turn conversations.
-
-Retrieval-Augmented Generation (RAG): The core feature that allows the chatbot to answer questions based on a provided PDF document.
-
-Secure API Integration: The backend securely handles all communication with the Gemini API, ensuring the API key is not exposed to the public.
-
-Cross-Origin Resource Sharing (CORS): The backend is properly configured to allow secure communication with the frontend.
+Conversational AI Chatbot – Supports multi-turn conversations for seamless interaction.
+Retrieval-Augmented Generation (RAG) – Retrieves context from a provided PDF (e.g., policy.pdf) to generate precise, document-aware answers.
+Secure API Handling – Keeps the Gemini API key confidential on the backend.
+Cross-Origin Resource Sharing (CORS) – Configured for secure frontend-backend communication.
 
 Technologies Used
 Frontend
-React: A popular JavaScript library for building the user interface.
-
-Tailwind CSS: A utility-first CSS framework for clean and responsive design.
+React – Component-based UI library for dynamic interfaces.
+Tailwind CSS – Utility-first CSS framework for clean, responsive design.
 
 Backend
-Python: The core programming language for the backend server.
-
-Flask: A lightweight Python web framework used to build the API.
+Python – Core backend programming language.
+Flask – Lightweight web framework for building REST APIs.
 
 AI & Machine Learning
-Gemini API: Google's state-of-the-art Large Language Model (LLM) for generative AI capabilities.
+Gemini API – Google’s advanced Large Language Model for generative responses.
+LangChain – Framework to orchestrate the RAG workflow (document loading, chunking, retrieval).
+ChromaDB – Lightweight vector database for storing embeddings and enabling semantic search.
 
-LangChain: A framework used to orchestrate the RAG pipeline, including document loading, chunking, and retrieval.
+Setup & Installation
+Backend Setup
+Open a terminal and navigate to the backend directory.
 
-ChromaDB: A lightweight vector database used to store document embeddings for efficient semantic search.
+Create a virtual environment:
+python -m venv venv
 
-Setup and Installation
-1. Backend Setup
-Navigate to the backend directory in your terminal.
-
-Create a Python virtual environment: python -m venv venv
 
 Activate the environment:
+Windows:
+venv\Scripts\activate
 
-On Windows: venv\Scripts\activate
+macOS/Linux:
+source venv/bin/activate
 
-On macOS/Linux: source venv/bin/activate
+Install dependencies:
+pip install -r requirements.txt
 
-Install the required Python packages: pip install -r requirements.txt
+Create a .env file and add your API key:
+GEMINI_API_KEY="YOUR_API_KEY_HERE"
 
-Create a .env file and add your Gemini API key: GEMINI_API_KEY="YOUR_API_KEY_HERE"
 
-Place your knowledge base PDF file in the backend directory. The current code expects the file to be named policy.pdf.
+Place your knowledge base PDF in the backend directory (default name: policy.pdf).
 
-Run the Flask backend server: flask run
+Start the backend server:
+flask run
 
-2. Frontend Setup
-Open a new terminal and navigate to the project's root directory.
+Frontend Setup
+Open a new terminal and navigate to the project root.
 
-Install the JavaScript dependencies: npm install
+Install dependencies:
+npm install
 
-Run the React frontend server: npm run dev
+Start the development server:
+npm run dev
 
-The application will be accessible at http://localhost:5173.
+Access the application at:
+http://localhost:5173
 
-How to Use
-Ensure both the frontend and backend servers are running.
-
-Open your browser and navigate to http://localhost:5173.
-
+Usage:
+Ensure both frontend and backend are running.
+Open your browser and go to http://localhost:5173.
 Type a question into the chatbox and press Enter.
 
-The chatbot will first search for relevant information in the policy.pdf document. If it finds a match, it will use that context to answer your question. If the question is outside the scope of the document, it will use its general knowledge from the Gemini model.
+The chatbot will:
+Search the policy.pdf for relevant context.
+Use the Gemini model to generate an answer.
+Fall back to general AI knowledge if no relevant document content is found.
 
-My Learning and Challenges
-Describe a key challenge you faced: For example, the CORS error between the frontend and backend or the chunking issues with the RAG model.
+Learning & Challenges:
+Key Challenge: Handling CORS errors during frontend-backend communication and managing document chunking for RAG accuracy.
+Solution: Configured Flask-CORS and fine-tuned LangChain chunk size/overlap to balance context relevance and efficiency.
 
-Explain your thought process to solve it: Describe how you debugged the problem and the specific solution you implemented.
+Learnings:
+Debugging cross-origin issues in full-stack apps.
+Integrating LLMs with structured data retrieval.
+Implementing a production-ready RAG pipeline.
 
-Summarize what you learned: Conclude by highlighting the key skills you gained, such as debugging, full-stack integration, and practical application of GenAI concepts.
+Future Improvements:
+Add authentication for user access control.
+Support multiple document uploads.
+Implement persistent conversation history.
+Optimize embedding storage for large datasets.
