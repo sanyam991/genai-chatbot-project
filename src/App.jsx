@@ -46,7 +46,7 @@ const App = () => {
         }));
         chatHistory.push({ role: 'user', parts: [{ text: input }] });
 
-        const apiUrl = 'https://genai-chatbot-project.onrender.com/chat';
+        const apiUrl = 'https://genai-chatbot-project.onrender.com';
 
         try {
             const response = await fetch(apiUrl, {
