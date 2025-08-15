@@ -22,7 +22,7 @@ genai.configure(api_key=api_key)
 
 app = Flask(__name__)
 # Allow requests from your React app
-CORS(app, origins="https://genai-chatbot-project.vercel.app/")
+CORS(app, origins="https://genai-chatbot-project.vercel.app")
 
 # --- RAG SETUP ---
 # Load the document and create a vector store. This runs once when the server starts.
