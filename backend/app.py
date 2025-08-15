@@ -22,7 +22,8 @@ genai.configure(api_key=api_key)
 
 app = Flask(__name__)
 # Allow requests from your React app
-CORS(app, origins="https://genai-chatbot-project.vercel.app")
+CORS(app, resources={r"/*": {"origins": "https://genai-chatbot-project.vercel.app"}})
+
 
 # --- RAG SETUP ---
 # Load the document and create a vector store. This runs once when the server starts.
@@ -70,10 +71,13 @@ def chat():
         user_message = data.get('messages', [])[-1]['parts'][0]['text']
         
         # The chat history needs to be in a specific format for the RAG chain
-        chat_history = [
-            (msg['parts'][0]['text'], msg['parts'][0]['text'])
-            for msg in data.get('messages', [])[:-1]
-        ]
+        chat_history = []
+for msg in data.get('messages', [])[:-1]:
+    if msg['role'] == 'user':
+        chat_history.append((msg['parts'][0]['text'], ""))  # User question
+    else:
+        chat_history.append(("", msg['parts'][0]['text']))  # Bot answer
+
         
         # Invoke the RAG chain
         response = rag_chain.invoke({'question': user_message, 'chat_history': chat_history})
