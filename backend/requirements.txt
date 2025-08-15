@@ -7,3 +7,4 @@ langchain-text-splitters
 pypdf
 chromadb
 gunicorn
+gevent
