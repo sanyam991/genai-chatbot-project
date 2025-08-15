@@ -1,10 +1,10 @@
 Flask
 Flask-CORS
 python-dotenv
+gunicorn
+gevent
 langchain-google-genai
 langchain-community
 langchain-text-splitters
 pypdf
 chromadb
-gunicorn
-gevent
