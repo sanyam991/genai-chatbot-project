@@ -55,7 +55,7 @@ rag_chain = ConversationalRetrievalChain.from_llm(
     return_source_documents=False
 )
 
-@app.route('/chat', methods=['POST'])
+@app.route('/chat', methods=['POST', 'OPTIONS'])
 def chat():
     if rag_chain is None:
         return jsonify({'error': 'RAG system is not initialized. Check server logs.'}), 500
